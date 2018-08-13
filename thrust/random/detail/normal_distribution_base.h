@@ -109,7 +109,8 @@ template<typename RealType>
       {
         uniform_real_distribution<RealType> u01;
         m_r1 = u01(urng);
-        m_r2 = u01(urng);
+        do{m_r2 = u01(urng);}
+        while(m_r2 >= 1);
         m_cached_rho = ::sqrt(-RealType(2) * ::log(RealType(1)-m_r2));
 
         m_valid = true;
